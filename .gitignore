@@ -5,3 +5,4 @@ dist/
 ytdlbt/__pycache__/*
 ytdlbt.egg-info
 .cache
+.DS_Store
