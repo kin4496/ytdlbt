@@ -21,7 +21,7 @@ yt.download('loststarts')
 ### Usage
 ````
 #get url
-url,_ = yt.get_url('loststars')
+url= yt.get_url('loststars')
 
 #download
 
