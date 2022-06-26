@@ -15,7 +15,7 @@ pip3 install ytdlbt
 ```
 from ytdlbt import ytdlbt as yt
 
-yt.download('loststarts',path='./')
+yt.download('loststarts')
 ```
 
 ### Usage
