@@ -28,10 +28,7 @@ def get_url(name,useOpt=False,kw=[],lim=20):
         data['duration'] = video['duration']
         stripped_results.append(data)
     
-    return(
-        YOUTUBE_LINK_BASE.format(stripped_results[0]['href']),
-        stripped_results[0]
-    )
+    return YOUTUBE_LINK_BASE.format(stripped_results[0]['href'])
 
 def _download(url,path='./'):
     music = yt(url)
