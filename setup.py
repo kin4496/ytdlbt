@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 if __name__=='__main__':
     setup(name='ytdlbt',
-        version='1.0.1',
+        version='1.0.2',
         author='insu',
         author_email='kin4496@naver.com',
         description='download youtube music by title',
