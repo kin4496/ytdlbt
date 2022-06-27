@@ -16,6 +16,7 @@ pip3 install ytdlbt
 from ytdlbt import ytdlbt as yt
 
 yt.download('loststarts')
+yt.download('adam levine loststarts')
 ```
 
 ### Usage
