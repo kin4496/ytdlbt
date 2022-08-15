@@ -1,10 +1,10 @@
-from youtubesearchpython import VideosSearch
+from youtubesearchpython import *
 from re import match
 from typing import List
 import os
 from pytube import YouTube as yt
 
-def get_url(name,useOpt=False,kw=[],lim=20):
+def get_url(name,useOpt=False,kw=[],lim=1):
 
     YOUTUBE_LINK_BASE="https://youtube.com{}"
 
@@ -16,10 +16,9 @@ def get_url(name,useOpt=False,kw=[],lim=20):
     # Replace all the spaces with +
     name = name.replace(' ', '+')
 
-    results = VideosSearch(name, limit=lim).result()["result"]
-
+    results = CustomSearch(name,VideoSortOrder.viewCount ,limit=lim).result()["result"]
     stripped_results = []
-
+    
     for video in results:
         data = {}
         data['title'] = video['title']
@@ -41,3 +40,4 @@ def download(name,path='./'):
     url=get_url(name)
     _download(url,path)
 
+download('봄여름가을겨울')
