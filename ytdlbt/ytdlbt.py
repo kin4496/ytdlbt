@@ -4,7 +4,7 @@ from typing import List
 import os
 from pytube import YouTube as yt
 
-def get_url(name,useOpt=False,kw=[],lim=1):
+def get_url(name,useOpt=False,kw=[],lim=10):
 
     YOUTUBE_LINK_BASE="https://youtube.com{}"
 
@@ -39,5 +39,3 @@ def _download(url,path='./'):
 def download(name,path='./'):
     url=get_url(name)
     _download(url,path)
-
-download('봄여름가을겨울')
