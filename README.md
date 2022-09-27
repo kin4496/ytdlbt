@@ -13,22 +13,15 @@ pip3 install ytdlbt
 ```
 
 ```
-from ytdlbt import ytdlbt as yt
-
-yt.download('loststarts')
-yt.download('adam levine loststarts')
-```
-
-### Usage
-````
-#get url
-url= yt.get_url('loststars')
-
-#download
+titles=['밤편지','좋은날','예술이야']
+artist=['아이유','아이유','싸이']
 
 path='./'
-yt.download('loststarts',path)
-#download mp3 file by song title
 
-yt._download(url,path)
-#download mp3 file by url
+for title,artist in zip(titles,artist):
+  url=yt.search(title,artist)
+  fname=yt.download(url)  
+  yt.transform(path,fname,title,artist)
+  #yt.transform(path,fname,title,artist,deleted=True)
+  #다운받은 음악파일을 삭제한다. 
+```
