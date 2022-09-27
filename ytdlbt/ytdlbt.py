@@ -1,12 +1,17 @@
 from youtubesearchpython import *
 from pytube import YouTube as yt
 
+import librosa
+import librosa.display
+import numpy as np
+import matplotlib.pyplot as plt
+
 import os
 
 YOUTUBE_LINK_BASE="https://youtube.com{}"
 
-def search(title,artist,uploadDate=False,viewCount=False,rating=False):
-
+def preprocess(title,artist):
+    
     if isinstance(artist,list):
         if len(artist)!=0:
             artist=''
@@ -14,9 +19,15 @@ def search(title,artist,uploadDate=False,viewCount=False,rating=False):
             artist=artist[0]
     
     if artist == None or artist=='':
-        query=title
+        text=title
     else:
-        query=f"{artist} {title}"
+        text=f"{artist} {title}"
+    
+    return text
+
+def search(title,artist,uploadDate=False,viewCount=False,rating=False):
+
+    query=preprocess(title,artist)
     
     if uploadDate:
         filter=VideoSortOrder.uploadDate
@@ -59,12 +70,36 @@ def download(url,path='./',progressive=None,adaptive=None,only_audio=True,file_e
 
     music=music_stream.download(output_path=path)
     base , ext = os.path.splitext(music)
-    fname=base+'.mp3'
+    fname=base+'.wav'
     os.rename(music,fname)
 
     return fname
 
+def transform(path,fname,title,artist,deleted=False):
+    
+    path = os.path.join(path,fname)
+    y,sr = librosa.load(path)
+    duration = len(y) // sr
+    half= duration//2
+    y=y[half*sr:(half+30)*sr]
+    
+    S=librosa.feature.melspectrogram(y=y, sr=sr)
+    S_dB = librosa.power_to_db(S,ref=np.max)
+    librosa.display.specshow(S_dB,sr=sr)
+    fname=preprocess(title,artist)
+    plt.savefig(fname+'.jpg',format='jpg')
+
+    if deleted:
+        os.remove(path)
+
 
 if __name__=="__main__":
-    url=search('좋은날','아이유')
-    download(url)
+
+    titles=['밤편지','좋은날','예술이야']
+    artist=['아이유','아이유','싸이']
+
+    for title,artist in zip(titles,artist):
+
+        url=search(title,artist)
+        fname=download(url)
+        transform('./',fname,title,artist)
