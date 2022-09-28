@@ -25,13 +25,12 @@ for title,artist in zip(titles,artist):
   #yt.transform(path,fname,title,artist,deleted=True)
   #다운받은 음악파일을 삭제한다. 
 ```
-```
 
 ### Usage
-```
+
+#### search(title,artist,uploadDate=False,viewCount=False,rating=False)
 ```
 
-search(title,artist,uploadDate=False,viewCount=False,rating=False)
   
   매개변수
   title : 노래 제목,
@@ -42,8 +41,11 @@ search(title,artist,uploadDate=False,viewCount=False,rating=False)
   
   return
   유튜브 url 반환 없으면 None값 반환
-  
- download(url,path,fname,progressive=None,adaptive=None,only_audio=True,file_extension=None)
+```
+
+#### download(url,path,fname,progressive=None,adaptive=None,only_audio=True,file_extension=None)
+```
+
   
   매개변수
   url : search 반환한 유튜브 주소를 넘겨준다.
@@ -52,7 +54,11 @@ search(title,artist,uploadDate=False,viewCount=False,rating=False)
   return 
   다운로드 한 음원의 파일 이름을 반환한다. 다운로드 실패시 None값 반환
   
-  transform(path,fname,title,artist,deleted=False)
+```
+
+#### transform(path,fname,title,artist,deleted=False)
+```
+
   
   매개변수
   path, fname : 음원이 저장된 위치와 파일 이름
