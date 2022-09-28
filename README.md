@@ -13,6 +13,7 @@ pip3 install ytdlbt
 ```
 
 ```
+from ytdlbt import ytdlbt as yt
 titles=['밤편지','좋은날','예술이야']
 artist=['아이유','아이유','싸이']
 
@@ -31,7 +32,6 @@ for title,artist in zip(titles,artist):
 #### search(title,artist,uploadDate=False,viewCount=False,rating=False)
 ```
 
-  
   매개변수
   title : 노래 제목,
   artist : 가수(만약 None값이 들어가면 제목만 가지고 검색),
@@ -46,7 +46,6 @@ for title,artist in zip(titles,artist):
 #### download(url,path,fname,progressive=None,adaptive=None,only_audio=True,file_extension=None)
 ```
 
-  
   매개변수
   url : search 반환한 유튜브 주소를 넘겨준다.
   path , fname : 음원을 저장할 위치와 파일 이름
@@ -59,7 +58,6 @@ for title,artist in zip(titles,artist):
 #### transform(path,fname,title,artist,deleted=False)
 ```
 
-  
   매개변수
   path, fname : 음원이 저장된 위치와 파일 이름
   title,artist : 멜스펙트럼을 저장할때 쓰일 제목과 가수 정보(ex '아이유 밤편지') 이런 형태로 저장됨
